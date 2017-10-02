@@ -7,8 +7,9 @@ template<typename M>
 struct Members
 {
     M data;
-    Members *next;
-    Members(M data) : data(data), next(NULL) {}
+    Members* next;
+    Members* prev;
+    Members(M data) : data(data), next(NULL), prev(NULL) {}
 };
 
 template<typename M>
@@ -16,17 +17,20 @@ class MembersList
 {
     Members<M>* head;
     Members<M>* tail;
-    size_t count_helper(Members<M> * mPtr) const;
+    size_t count_helper(Members<M>* mPtr) const;
+    void display_helper(Members<M>* tmp) const;
 public:
     MembersList();
     MembersList(const MembersList& list);
     MembersList& operator=(const MembersList& list);
     ~MembersList();
+    std::string display();
     void push_back(const M& value);
     void push_front(const M& value);
     void pop_front() noexcept(false);
+    void pop_back() noexcept(false);
     void select_sort();
-    bool remove_member(const M& value);
+    bool remove_member(M value);
     bool isEmpty()const;
     std::string output_linkedlist();
     size_t members_size() const;
@@ -41,54 +45,87 @@ MembersList<M>::MembersList() :
 template<typename M>
 MembersList<M>::MembersList(const MembersList& list)
 {
-    Members<M> *newPtr = NULL;
-    Members<M> *headPtr;
+    Members<M>* newPtr = NULL;
+    Members<M>* tPtr = NULL;
+    Members<M>* headPtr;
     headPtr = list.head;
-    if(headPtr != NULL)
+    while(headPtr != NULL)
     {
-        newPtr = new Members<M>(headPtr->data);
-        head = tail = newPtr;
+        push_back(headPtr->data);
         headPtr = headPtr->next;
-        while(headPtr != NULL)
-        {
-            newPtr = new Members<M>(headPtr->data);
-            tail->next = newPtr;
-            tail = newPtr;
-            headPtr = headPtr->next;
-        }
     }
-    else
-        head = tail = NULL;
+
+    //    if(headPtr != NULL)
+    //    {
+    //        newPtr = new Members<M>(headPtr->data);
+    //        head = tail = newPtr;
+    //        headPtr = headPtr->next;
+    //        while(headPtr != NULL)
+    //        {
+    //            newPtr = new Members<M>(headPtr->data);
+    //            tail->next = newPtr;
+    //            tail = newPtr;
+    //            headPtr = headPtr->next;
+    //        }
+    //    }
+    //    else
+    //        head = tail = NULL;
 }
 
 template<typename M>
 MembersList<M>& MembersList<M>::operator=(const MembersList& list)
 {
-    Members<M> *headPtr;
-    Members<M> *newPtr;
-    headPtr = head;
-    while(headPtr != NULL)
+    Members<M> *headPtr = list.head;
+    if(head != NULL)
     {
-        head = head->next;
-        delete headPtr;
-        headPtr = head;
-    }
-    headPtr = list.head;
-    if(headPtr != NULL)
-    {
-        newPtr = new Members<M>(headPtr->data);
-        head = tail = newPtr;
-        headPtr = headPtr->next;
+        Members<M>* temp = head;
+        while(temp != NULL)
+        {
+            head = head->next;
+            delete temp;
+            head = temp;
+        }
+        tail = NULL;
+        while (headPtr != NULL)
+        {
+            push_back(headPtr->data);
+            headPtr = headPtr->next;
+        }
     }
     else
-        head = tail = NULL;
-    while(headPtr != NULL)
     {
-        newPtr = new Members<M>(headPtr->data);
-        tail->next = newPtr;
-        tail = newPtr;
-        headPtr = headPtr->next;
+        while(headPtr != NULL)
+        {
+            push_back(headPtr->data);
+            headPtr = headPtr->next;
+        }
     }
+
+
+
+    //    headPtr = head;
+    //    while(headPtr != NULL)
+    //    {
+    //        head = head->next;
+    //        delete headPtr;
+    //        headPtr = head;
+    //    }
+    //    headPtr = list.head;
+    //    if(headPtr != NULL)
+    //    {
+    //        newPtr = new Members<M>(headPtr->data);
+    //        head = tail = newPtr;
+    //        headPtr = headPtr->next;
+    //    }
+    //    else
+    //        head = tail = NULL;
+    //    while(headPtr != NULL)
+    //    {
+    //        newPtr = new Members<M>(headPtr->data);
+    //        tail->next = newPtr;
+    //        tail = newPtr;
+    //        headPtr = headPtr->next;
+    //    }
     return *this;
 }
 
@@ -97,7 +134,7 @@ MembersList<M>::~MembersList()
 {
     Members<M>* headPtr = head;
     Members<M>* delPtr;
-    while(headPtr != NULL)
+    while(isEmpty())
     {
         delPtr = headPtr;
         delete headPtr;
@@ -107,43 +144,134 @@ MembersList<M>::~MembersList()
 }
 
 template<typename M>
+std::string MembersList<M>::display()
+{
+    std::stringstream out_sss;
+    Members<M>* temp = head;
+    while(isEmpty())
+    {
+        out_sss << temp->data;
+        if(temp->next != NULL)
+            out_sss << " ";
+        temp = temp->next;
+    }
+    return out_sss.str();
+}
+
+
+template<typename M>
 void MembersList<M>::push_back(const M &value)
 {
-    Members<M> *newPtr = new Members<M>(value);
-    if(isEmpty())
-        head = tail = newPtr;
-    else
+    if(tail != NULL)
     {
+        Members<M> *newPtr = new Members<M>(value);
+        newPtr->prev = tail;
         tail->next = newPtr;
         tail = newPtr;
+        tail->next = NULL;
     }
+    else
+    {
+        Members<M> *newPtr = new Members<M>(value);
+        tail = newPtr;
+        tail->prev = NULL;
+        head = tail;
+        tail->next = NULL;
+    }
+
+
+    //    if(isEmpty())
+    //        head = tail = newPtr;
+    //    else
+    //    {
+    //        tail->next = newPtr;
+    //        tail = newPtr;
+    //    }
 }
 
 template<typename M>
 void MembersList<M>::push_front(const M &value)
 {
-    Members<M> *newPtr = new Members<M>(value);
     if(isEmpty())
-        head = tail = newPtr;
+    {
+        Members<M> *newPtr = new Members<M>(value);
+        newPtr->next = head;
+        head->prev = newPtr;
+        head = newPtr;
+        head->prev = NULL;
+
+    }
     else
     {
-        head->prev = newPtr;
-        newPtr->next = head;
+        Members<M> *newPtr = new Members<M>(value);
         head = newPtr;
+        head->prev = NULL;
+        head->next = NULL;
+        tail = head;
     }
+
+    //    if(isEmpty())
+    //        head = tail = newPtr;
+    //    else
+    //    {
+    //        head->prev = newPtr;
+    //        newPtr->next = head;
+    //        head = newPtr;
+    //    }
 }
 
 template<typename M>
 void MembersList<M>::pop_front() noexcept(false)
 {
     if(isEmpty())
-        throw("Cannot use pop_front");
-    else
     {
-        Members<M> *headPtr = head;
-        head = head->next;
-        delete headPtr;
+        if(head->next == NULL)
+        {
+            delete head;
+            head = NULL;
+            tail = NULL;
+        }
+        else
+        {
+            Members<M>* temp = head->next;
+            delete head;
+            head = temp;
+            temp->prev = NULL;
+        }
     }
+    else
+        throw ("ERROR");
+    //    if(isEmpty())
+    //        throw("Cannot use pop_front");
+    //    else
+    //    {
+    //        Members<M> *headPtr = head;
+    //        head = head->next;
+    //        delete headPtr;
+    //    }
+}
+
+template<typename M>
+void MembersList<M>::pop_back() noexcept(false)
+{
+    if(tail != NULL)
+    {
+        if(tail->prev == NULL)
+        {
+            delete tail;
+            head = NULL;
+            tail = NULL;
+        }
+        else
+        {
+            Members<M> *temp = tail->prev;
+            delete tail;
+            tail = temp;
+            tail->next = NULL;
+        }
+    }
+    else
+        throw ("ERROR");
 }
 
 template<typename M>
@@ -170,31 +298,41 @@ bool MembersList<M>::isEmpty() const
 }
 
 template<typename M>
-bool MembersList<M>::remove_member(const M& value)
+bool MembersList<M>::remove_member(M value)
 {
-    MembersList<M>* newPtr;
-    newPtr = head;
-    MembersList<M>* nextPtr, * delPtr;
-
-    while(newPtr != nullptr)
+    if(head == NULL)
+        return false;
+    else
     {
-        nextPtr = newPtr;
-        while(nextPtr->next != nullptr)
+        Members<M> *temp = head;
+        while(temp->data != value)
+            temp = temp->next;
+        if(temp != NULL)
         {
-            if(newPtr->next->data == value->data)
+            if(temp->prev == NULL)
             {
-                delPtr = nextPtr->next;
-                nextPtr->next = delPtr->next;
-                delete delPtr;
+                pop_front();
+                return true;
+            }
+            else if(temp->next == NULL)
+            {
+                pop_back();
+                return true;
             }
             else
-                nextPtr = nextPtr->next;
+            {
+                Members<M> *prevTemp = temp->prev;
+                prevTemp->next = temp->next;
+                temp->next->prev = prevTemp;
+                delete temp;
+                temp = NULL;
+                return true;
+            }
         }
-        tail = newPtr;
-        newPtr = newPtr->next;
-
+        else
+            return false;
     }
-    return false;
+
 }// not working.. fixed code
 
 template<typename M>

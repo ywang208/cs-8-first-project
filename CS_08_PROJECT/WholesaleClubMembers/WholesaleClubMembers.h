@@ -37,15 +37,39 @@ public:
 
 
 private slots:
-
-    bool on_pushButton_clicked();                       // SUBMIT BUTTON
-    void on_lineEdit_MemberEntry_returnPressed();       // ENTER IN LINEEDIT
-
+    // GET INPUT TEXT FILE
+    void get_data();
+    // ENTER IN LINEEDIT
+    void on_lineEdit_MemberEntry_returnPressed();
+    // SUBMIT BUTTON
+    bool on_pushButton_Submit_clicked();
+    // CLEAR BUTTON
     bool on_pushButton_Clear_clicked();
+    // CLICK YES
+    bool on_pushButton_Yes_clicked();
+    // CLICK NO
+    bool on_pushButton_No_clicked();
 
 
-    void on_pushButton_2_clicked();
 
+
+    // OPTIONS
+    bool on_radioButton_optionsTotal_clicked();
+    bool on_radioButton_optionsSearch_clicked();
+    bool on_radioButton_optionsDate_clicked();
+    bool on_radioButton_optionsAdd_clicked();
+    bool on_radioButton_optionsDelete_clicked();
+    bool on_radioButton_optionsPurchases_clicked();
+    bool on_radioButton_optionsReport_clicked();
+    bool on_radioButton_optionsQuit_clicked();
+
+    // REPORTS
+    bool on_radioButton_reportsPrintAnyDay_clicked();
+    bool on_radioButton_reportsPrintTotal_clicked();
+    bool on_radioButton_reportsQttSorted_clicked();
+    bool on_radioButton_reportsRebateSorted_clicked();
+    bool on_radioButton_reportsAmountDue_clicked();
+    bool on_radioButton_reportQuit_clicked();
 
 private:
     Ui::WholesaleClubMembers *ui;

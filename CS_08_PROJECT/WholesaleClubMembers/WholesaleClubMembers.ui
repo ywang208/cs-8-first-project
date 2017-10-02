@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1244</width>
-    <height>718</height>
+    <height>746</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,9 +17,9 @@
    <widget class="QGroupBox" name="groupBox_MemberEntry">
     <property name="geometry">
      <rect>
-      <x>40</x>
-      <y>30</y>
-      <width>471</width>
+      <x>30</x>
+      <y>20</y>
+      <width>481</width>
       <height>591</height>
      </rect>
     </property>
@@ -30,7 +30,7 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>460</y>
+       <y>270</y>
        <width>271</width>
        <height>51</height>
       </rect>
@@ -42,11 +42,11 @@
       <bool>true</bool>
      </property>
     </widget>
-    <widget class="QPushButton" name="pushButton">
+    <widget class="QPushButton" name="pushButton_Submit">
      <property name="geometry">
       <rect>
        <x>300</x>
-       <y>460</y>
+       <y>270</y>
        <width>80</width>
        <height>51</height>
       </rect>
@@ -59,30 +59,17 @@
      <property name="geometry">
       <rect>
        <x>20</x>
-       <y>50</y>
-       <width>411</width>
-       <height>391</height>
+       <y>40</y>
+       <width>441</width>
+       <height>211</height>
       </rect>
-     </property>
-    </widget>
-    <widget class="QPushButton" name="pushButton_2">
-     <property name="geometry">
-      <rect>
-       <x>190</x>
-       <y>550</y>
-       <width>80</width>
-       <height>24</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>test</string>
      </property>
     </widget>
     <widget class="QPushButton" name="pushButton_Clear">
      <property name="geometry">
       <rect>
        <x>380</x>
-       <y>460</y>
+       <y>270</y>
        <width>80</width>
        <height>51</height>
       </rect>
@@ -91,12 +78,166 @@
       <string>Clear</string>
      </property>
     </widget>
+    <widget class="QPushButton" name="pushButton_Yes">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>270</y>
+       <width>81</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>Yes</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="pushButton_No">
+     <property name="geometry">
+      <rect>
+       <x>150</x>
+       <y>270</y>
+       <width>81</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string>No</string>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_options">
+     <property name="geometry">
+      <rect>
+       <x>70</x>
+       <y>320</y>
+       <width>194</width>
+       <height>261</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QRadioButton" name="radioButton_optionsTotal">
+        <property name="text">
+         <string>1. Show total purchases</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_optionsSearch">
+        <property name="text">
+         <string>2. Search Item name</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_optionsDate">
+        <property name="text">
+         <string>3. Show Exp Date</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_optionsAdd">
+        <property name="text">
+         <string>4. Add</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_optionsDelete">
+        <property name="text">
+         <string>5. Delete</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_optionsPurchases">
+        <property name="text">
+         <string>6. Purchase</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_optionsReport">
+        <property name="text">
+         <string>7. Report</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_optionsQuit">
+        <property name="text">
+         <string>8. Quit</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_reports">
+     <property name="geometry">
+      <rect>
+       <x>270</x>
+       <y>320</y>
+       <width>151</width>
+       <height>205</height>
+      </rect>
+     </property>
+     <property name="title">
+      <string/>
+     </property>
+     <layout class="QVBoxLayout" name="verticalLayout_2">
+      <item>
+       <widget class="QRadioButton" name="radioButton_reportsPrintAnyDay">
+        <property name="text">
+         <string>1. Print any day</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_reportsPrintTotal">
+        <property name="text">
+         <string>2. Print total </string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_reportsQttSorted">
+        <property name="text">
+         <string>3. Qty sorted</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_reportsRebateSorted">
+        <property name="text">
+         <string>4. Rebate sorted</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_reportsAmountDue">
+        <property name="text">
+         <string>5. Amount due</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QRadioButton" name="radioButton_reportQuit">
+        <property name="text">
+         <string>6. Quit</string>
+        </property>
+       </widget>
+      </item>
+     </layout>
+    </widget>
    </widget>
    <widget class="QGroupBox" name="groupBox_Output">
     <property name="geometry">
      <rect>
       <x>520</x>
-      <y>30</y>
+      <y>20</y>
       <width>721</width>
       <height>591</height>
      </rect>
