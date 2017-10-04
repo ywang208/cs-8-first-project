@@ -1,8 +1,9 @@
-#ifndef LINKEDLIST_H
-#define LINKEDLIST_H
+#ifndef MEMBERSLIST_H
+#define MEMBERSLIST_H
 #include <iostream>
 #include <sstream>
 
+// struct nodes of Members templated
 template<typename M>
 struct Members
 {
@@ -10,31 +11,49 @@ struct Members
     Members* next;
     Members* prev;
     Members(M data) : data(data), next(NULL), prev(NULL) {}
+
 };
 
+// class MembersList templated
 template<typename M>
 class MembersList
 {
+    // Head and Tail pointers
     Members<M>* head;
     Members<M>* tail;
+    // Counter
     size_t count_helper(Members<M>* mPtr) const;
-    void display_helper(Members<M>* tmp) const;
 public:
+    // Constructor
     MembersList();
+    // Copy Constructor
     MembersList(const MembersList& list);
+    // Assignment Operator
     MembersList& operator=(const MembersList& list);
+    // Destructor
     ~MembersList();
-    std::string display();
+    // push_back
     void push_back(const M& value);
+    // select_sort
+    void select_sort();
+    // isEmpty
+    bool isEmpty()const;
+    // output stringstream
+    std::string output_linkedlist();
+    // return true if member is in the list
+    bool find_member(const M& value);
+    // find position of member
+    size_t find_position_member(const M& value);
+
+
+    // remove member needs to be fixed
+    bool remove_member(const M& value);
+    // not in use
     void push_front(const M& value);
     void pop_front() noexcept(false);
     void pop_back() noexcept(false);
-    void select_sort();
-    bool remove_member(M value);
-    bool isEmpty()const;
-    std::string output_linkedlist();
     size_t members_size() const;
-    bool find_member(const M& value);
+
 };
 
 template<typename M>
@@ -54,22 +73,6 @@ MembersList<M>::MembersList(const MembersList& list)
         push_back(headPtr->data);
         headPtr = headPtr->next;
     }
-
-    //    if(headPtr != NULL)
-    //    {
-    //        newPtr = new Members<M>(headPtr->data);
-    //        head = tail = newPtr;
-    //        headPtr = headPtr->next;
-    //        while(headPtr != NULL)
-    //        {
-    //            newPtr = new Members<M>(headPtr->data);
-    //            tail->next = newPtr;
-    //            tail = newPtr;
-    //            headPtr = headPtr->next;
-    //        }
-    //    }
-    //    else
-    //        head = tail = NULL;
 }
 
 template<typename M>
@@ -100,32 +103,6 @@ MembersList<M>& MembersList<M>::operator=(const MembersList& list)
             headPtr = headPtr->next;
         }
     }
-
-
-
-    //    headPtr = head;
-    //    while(headPtr != NULL)
-    //    {
-    //        head = head->next;
-    //        delete headPtr;
-    //        headPtr = head;
-    //    }
-    //    headPtr = list.head;
-    //    if(headPtr != NULL)
-    //    {
-    //        newPtr = new Members<M>(headPtr->data);
-    //        head = tail = newPtr;
-    //        headPtr = headPtr->next;
-    //    }
-    //    else
-    //        head = tail = NULL;
-    //    while(headPtr != NULL)
-    //    {
-    //        newPtr = new Members<M>(headPtr->data);
-    //        tail->next = newPtr;
-    //        tail = newPtr;
-    //        headPtr = headPtr->next;
-    //    }
     return *this;
 }
 
@@ -142,22 +119,6 @@ MembersList<M>::~MembersList()
     }
     tail = NULL;
 }
-
-template<typename M>
-std::string MembersList<M>::display()
-{
-    std::stringstream out_sss;
-    Members<M>* temp = head;
-    while(isEmpty())
-    {
-        out_sss << temp->data;
-        if(temp->next != NULL)
-            out_sss << " ";
-        temp = temp->next;
-    }
-    return out_sss.str();
-}
-
 
 template<typename M>
 void MembersList<M>::push_back(const M &value)
@@ -178,15 +139,6 @@ void MembersList<M>::push_back(const M &value)
         head = tail;
         tail->next = NULL;
     }
-
-
-    //    if(isEmpty())
-    //        head = tail = newPtr;
-    //    else
-    //    {
-    //        tail->next = newPtr;
-    //        tail = newPtr;
-    //    }
 }
 
 template<typename M>
@@ -199,25 +151,14 @@ void MembersList<M>::push_front(const M &value)
         head->prev = newPtr;
         head = newPtr;
         head->prev = NULL;
-
     }
     else
     {
         Members<M> *newPtr = new Members<M>(value);
         head = newPtr;
-        head->prev = NULL;
-        head->next = NULL;
+        head->prev = head->next = NULL;
         tail = head;
     }
-
-    //    if(isEmpty())
-    //        head = tail = newPtr;
-    //    else
-    //    {
-    //        head->prev = newPtr;
-    //        newPtr->next = head;
-    //        head = newPtr;
-    //    }
 }
 
 template<typename M>
@@ -228,8 +169,7 @@ void MembersList<M>::pop_front() noexcept(false)
         if(head->next == NULL)
         {
             delete head;
-            head = NULL;
-            tail = NULL;
+            head = tail = NULL;
         }
         else
         {
@@ -241,14 +181,6 @@ void MembersList<M>::pop_front() noexcept(false)
     }
     else
         throw ("ERROR");
-    //    if(isEmpty())
-    //        throw("Cannot use pop_front");
-    //    else
-    //    {
-    //        Members<M> *headPtr = head;
-    //        head = head->next;
-    //        delete headPtr;
-    //    }
 }
 
 template<typename M>
@@ -259,8 +191,7 @@ void MembersList<M>::pop_back() noexcept(false)
         if(tail->prev == NULL)
         {
             delete tail;
-            head = NULL;
-            tail = NULL;
+            head = tail = NULL;
         }
         else
         {
@@ -289,7 +220,7 @@ void MembersList<M>::select_sort()
             }
         }
     }
-}// this is O(n^2). try to find O(n log n) or better
+}
 
 template<typename M>
 bool MembersList<M>::isEmpty() const
@@ -298,7 +229,7 @@ bool MembersList<M>::isEmpty() const
 }
 
 template<typename M>
-bool MembersList<M>::remove_member(M value)
+bool MembersList<M>::remove_member(const M& value)
 {
     if(head == NULL)
         return false;
@@ -332,7 +263,6 @@ bool MembersList<M>::remove_member(M value)
         else
             return false;
     }
-
 }// not working.. fixed code
 
 template<typename M>
@@ -344,6 +274,18 @@ bool MembersList<M>::find_member(const M& value)
             return true;
     }
     return false;
+}
+
+template<typename M>
+size_t MembersList<M>::find_position_member(const M& value)
+{
+    size_t index = 0;
+    for(Members<M>* i = head; i != NULL; i = i->next)
+    {
+        if(i->data == value)
+            index = count_helper(i);
+    }
+    return index;
 }
 
 template<typename M>
@@ -373,8 +315,7 @@ size_t MembersList<M>::count_helper(Members<M> * mPtr) const
     if(mPtr == NULL)
         return 0;
     else
-        return 1 + count_helper(mPtr->next);
+        return 1 + count_helper(mPtr->prev);
 }
 
-
-#endif // LINKEDLIST_H
+#endif // MEMBERSLIST_H

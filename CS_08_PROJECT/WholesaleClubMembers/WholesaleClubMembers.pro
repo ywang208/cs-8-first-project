@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2017-09-29T20:08:55
+# Project created by QtCreator 2017-10-03T18:33:49
 #
 #-------------------------------------------------
 
@@ -33,4 +33,3 @@ HEADERS += \
 
 FORMS += \
         WholesaleClubMembers.ui
-

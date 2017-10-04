@@ -202,7 +202,6 @@ DIST          = ../../../../5.8/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../5.8/clang_64/mkspecs/features/qt_config.prf \
 		../../../../5.8/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../../5.8/clang_64/mkspecs/features/spec_post.prf \
-		../WholesaleClubMembers/.qmake.stash \
 		../../../../5.8/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../../5.8/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../../5.8/clang_64/mkspecs/features/toolchain.prf \
@@ -393,7 +392,6 @@ Makefile: ../WholesaleClubMembers/WholesaleClubMembers.pro ../../../../5.8/clang
 		../../../../5.8/clang_64/mkspecs/features/qt_config.prf \
 		../../../../5.8/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../../5.8/clang_64/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		../../../../5.8/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../../5.8/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../../5.8/clang_64/mkspecs/features/toolchain.prf \
@@ -574,7 +572,6 @@ Makefile: ../WholesaleClubMembers/WholesaleClubMembers.pro ../../../../5.8/clang
 ../../../../5.8/clang_64/mkspecs/features/qt_config.prf:
 ../../../../5.8/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../../../5.8/clang_64/mkspecs/features/spec_post.prf:
-.qmake.stash:
 ../../../../5.8/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../../../5.8/clang_64/mkspecs/features/mac/sdk.prf:
 ../../../../5.8/clang_64/mkspecs/features/toolchain.prf:
@@ -647,7 +644,6 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r WholesaleClubMembers.app
-	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -676,20 +672,16 @@ moc_WholesaleClubMembers.cpp: ../../../../5.8/clang_64/lib/QtWidgets.framework/H
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QTextStream \
 		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qtextstream.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QDataStream \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qdatastream.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QString \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QFile \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qfile.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QtDebug \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QtDebug \
+		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QStringList \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qstringlist.h \
+		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QFile \
+		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qfile.h \
 		../WholesaleClubMembers/MembersList.h \
 		../WholesaleClubMembers/WholesaleClubMembers.h \
 		moc_predefs.h \
@@ -722,20 +714,16 @@ main.o: ../WholesaleClubMembers/main.cpp ../WholesaleClubMembers/WholesaleClubMe
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QTextStream \
 		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qtextstream.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QDataStream \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qdatastream.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QString \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QFile \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qfile.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QtDebug \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QtDebug \
+		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QStringList \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qstringlist.h \
+		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QFile \
+		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qfile.h \
 		../WholesaleClubMembers/MembersList.h \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
@@ -746,20 +734,16 @@ WholesaleClubMembers.o: ../WholesaleClubMembers/WholesaleClubMembers.cpp ../Whol
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
 		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QTextStream \
 		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qtextstream.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QDataStream \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qdatastream.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QString \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QFile \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qfile.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QtDebug \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
+		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QString \
+		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
+		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QtDebug \
+		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qdebug.h \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QStringList \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qstringlist.h \
+		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QFile \
+		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qfile.h \
 		../WholesaleClubMembers/MembersList.h \
 		ui_WholesaleClubMembers.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o WholesaleClubMembers.o ../WholesaleClubMembers/WholesaleClubMembers.cpp
