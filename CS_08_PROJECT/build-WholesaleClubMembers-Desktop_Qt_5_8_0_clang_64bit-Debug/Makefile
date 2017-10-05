@@ -202,6 +202,7 @@ DIST          = ../../../../5.8/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../5.8/clang_64/mkspecs/features/qt_config.prf \
 		../../../../5.8/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../../5.8/clang_64/mkspecs/features/spec_post.prf \
+		../WholesaleClubMembers/.qmake.stash \
 		../../../../5.8/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../../5.8/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../../5.8/clang_64/mkspecs/features/toolchain.prf \
@@ -229,6 +230,7 @@ DIST          = ../../../../5.8/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../5.8/clang_64/mkspecs/features/yacc.prf \
 		../../../../5.8/clang_64/mkspecs/features/lex.prf \
 		../WholesaleClubMembers/WholesaleClubMembers.pro ../WholesaleClubMembers/WholesaleClubMembers.h \
+		../WholesaleClubMembers/InvalidMembers.h \
 		../WholesaleClubMembers/MembersList.h ../WholesaleClubMembers/main.cpp \
 		../WholesaleClubMembers/WholesaleClubMembers.cpp
 QMAKE_TARGET  = WholesaleClubMembers
@@ -392,6 +394,7 @@ Makefile: ../WholesaleClubMembers/WholesaleClubMembers.pro ../../../../5.8/clang
 		../../../../5.8/clang_64/mkspecs/features/qt_config.prf \
 		../../../../5.8/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../../5.8/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../5.8/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../../5.8/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../../5.8/clang_64/mkspecs/features/toolchain.prf \
@@ -572,6 +575,7 @@ Makefile: ../WholesaleClubMembers/WholesaleClubMembers.pro ../../../../5.8/clang
 ../../../../5.8/clang_64/mkspecs/features/qt_config.prf:
 ../../../../5.8/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../../../5.8/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../5.8/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../../../5.8/clang_64/mkspecs/features/mac/sdk.prf:
 ../../../../5.8/clang_64/mkspecs/features/toolchain.prf:
@@ -632,7 +636,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../5.8/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../WholesaleClubMembers/WholesaleClubMembers.h ../WholesaleClubMembers/MembersList.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../WholesaleClubMembers/WholesaleClubMembers.h ../WholesaleClubMembers/InvalidMembers.h ../WholesaleClubMembers/MembersList.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../WholesaleClubMembers/main.cpp ../WholesaleClubMembers/WholesaleClubMembers.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../WholesaleClubMembers/WholesaleClubMembers.ui $(DISTDIR)/
 
@@ -644,6 +648,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r WholesaleClubMembers.app
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -683,6 +688,7 @@ moc_WholesaleClubMembers.cpp: ../../../../5.8/clang_64/lib/QtWidgets.framework/H
 		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QFile \
 		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qfile.h \
 		../WholesaleClubMembers/MembersList.h \
+		../WholesaleClubMembers/InvalidMembers.h \
 		../WholesaleClubMembers/WholesaleClubMembers.h \
 		moc_predefs.h \
 		../../../../5.8/clang_64/bin/moc
@@ -725,6 +731,7 @@ main.o: ../WholesaleClubMembers/main.cpp ../WholesaleClubMembers/WholesaleClubMe
 		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QFile \
 		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qfile.h \
 		../WholesaleClubMembers/MembersList.h \
+		../WholesaleClubMembers/InvalidMembers.h \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../WholesaleClubMembers/main.cpp
@@ -745,6 +752,7 @@ WholesaleClubMembers.o: ../WholesaleClubMembers/WholesaleClubMembers.cpp ../Whol
 		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QFile \
 		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qfile.h \
 		../WholesaleClubMembers/MembersList.h \
+		../WholesaleClubMembers/InvalidMembers.h \
 		ui_WholesaleClubMembers.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o WholesaleClubMembers.o ../WholesaleClubMembers/WholesaleClubMembers.cpp
 

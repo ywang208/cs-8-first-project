@@ -1,7 +1,6 @@
 #ifndef MEMBERSLIST_H
 #define MEMBERSLIST_H
-#include <iostream>
-#include <sstream>
+#include "InvalidMembers.h"
 
 // struct nodes of Members templated
 template<typename M>
@@ -10,8 +9,10 @@ struct Members
     M data;
     Members* next;
     Members* prev;
-    Members(M data) : data(data), next(NULL), prev(NULL) {}
-
+    Members(M data) :
+        data(data),
+        next(NULL),
+        prev(NULL) {}
 };
 
 // class MembersList templated
@@ -24,43 +25,31 @@ class MembersList
     // Counter
     size_t count_helper(Members<M>* mPtr) const;
 public:
-    // Constructor
-    MembersList();
-    // Copy Constructor
-    MembersList(const MembersList& list);
-    // Assignment Operator
-    MembersList& operator=(const MembersList& list);
-    // Destructor
-    ~MembersList();
-    // push_back
-    void push_back(const M& value);
-    // select_sort
-    void select_sort();
-    // isEmpty
-    bool isEmpty()const;
-    // output stringstream
-    std::string output_linkedlist();
-    // return true if member is in the list
-    bool find_member(const M& value);
-    // find position of member
-    size_t find_position_member(const M& value);
-
-
-    // remove member needs to be fixed
-    bool remove_member(const M& value);
-    // not in use
-    void push_front(const M& value);
-    void pop_front() noexcept(false);
-    void pop_back() noexcept(false);
-    size_t members_size() const;
-
+    MembersList();                                          // Constructor
+    MembersList(const MembersList& list);                   // Copy Constructor
+    MembersList& operator=(const MembersList& list);        // Assignment Operator
+    ~MembersList();                                         // Destructor
+    Members<M>* return_member(size_t pos) const;            // returns members data type with its position given
+    size_t members_size() const;                            // returns size of list
+    size_t find_position_member(const M& value);            // find position of member
+    bool isEmpty()const;                                    // isEmpty
+    bool find_member(const M& value);                       // return true if member is in the list
+    bool remove_member(const M& value);                     // remove member
+    void select_sort();                                     // select_sort
+    void push_back(const M& value);                         // push_back
+    void push_front(const M& value);                        // push_front
+    void pop_front() noexcept(false);                       // pop_front
+    void pop_back() noexcept(false);                        // pop_back
+    std::string output_linkedlist();                        // output stringstream
 };
 
+// Constructor
 template<typename M>
 MembersList<M>::MembersList() :
     head(NULL),
     tail(NULL) {}
 
+// Copy Constructor
 template<typename M>
 MembersList<M>::MembersList(const MembersList& list)
 {
@@ -75,6 +64,7 @@ MembersList<M>::MembersList(const MembersList& list)
     }
 }
 
+// Assignment Operator
 template<typename M>
 MembersList<M>& MembersList<M>::operator=(const MembersList& list)
 {
@@ -106,6 +96,7 @@ MembersList<M>& MembersList<M>::operator=(const MembersList& list)
     return *this;
 }
 
+// Destructor
 template<typename M>
 MembersList<M>::~MembersList()
 {
@@ -120,6 +111,99 @@ MembersList<M>::~MembersList()
     tail = NULL;
 }
 
+// returns members data type with its position given
+template<typename M>
+Members<M>* MembersList<M>::return_member(size_t pos) const
+{
+    Members<M>* tmp = head;
+    for(size_t i = 0; i < pos - 1; ++i)
+        tmp = tmp->next;
+    return tmp;
+}
+
+// returns size of list
+template<typename M>
+size_t MembersList<M>::members_size() const
+{
+    return count_helper(head);
+}
+
+// find position of member
+template<typename M>
+size_t MembersList<M>::find_position_member(const M& value)
+{
+    size_t index = 0;
+    for(Members<M>* i = head; i != NULL; i = i->next)
+    {
+        if(i->data == value)
+            index = count_helper(i);
+    }
+    return index;
+}
+
+// isEmpty
+template<typename M>
+bool MembersList<M>::isEmpty() const
+{
+    return head == NULL;
+}
+
+// return true if member is in the list
+template<typename M>
+bool MembersList<M>::find_member(const M& value)
+{
+    for(Members<M>* i = head; i != NULL; i = i->next)
+    {
+        if(i->data == value)
+            return true;
+    }
+    return false;
+}
+
+// remove member
+template<typename M>
+bool MembersList<M>::remove_member(const M& value)
+{
+    Members<M>* index = head;
+    for(; index != NULL; index = index->next)
+    {
+        if(index->data == value)
+        {
+            if(index->prev == NULL)
+                head = index->next;
+            else if(index->next == NULL)
+                index->prev->next = NULL;
+            else
+            {
+                index->prev->next = index->next;
+                index->next->prev = index->prev;
+            }
+            delete index;
+            return true;
+        }
+    }
+    return false;
+}
+
+// select sort
+template<typename M>
+void MembersList<M>::select_sort()
+{
+    for(Members<M> * i = head; i != NULL; i = i->next)
+    {
+        for(Members<M> * j = i->next; j != NULL; j = j->next)
+        {
+            if(j->data < i->data)
+            {
+                M temp = j->data;
+                j->data = i->data;
+                i->data = temp;
+            }
+        }
+    }
+}
+
+// push_back
 template<typename M>
 void MembersList<M>::push_back(const M &value)
 {
@@ -141,6 +225,7 @@ void MembersList<M>::push_back(const M &value)
     }
 }
 
+// push_front
 template<typename M>
 void MembersList<M>::push_front(const M &value)
 {
@@ -161,6 +246,7 @@ void MembersList<M>::push_front(const M &value)
     }
 }
 
+// pop_front
 template<typename M>
 void MembersList<M>::pop_front() noexcept(false)
 {
@@ -180,9 +266,10 @@ void MembersList<M>::pop_front() noexcept(false)
         }
     }
     else
-        throw ("ERROR");
+        throw InvalidMembers("ERROR");
 }
 
+// pop_back
 template<typename M>
 void MembersList<M>::pop_back() noexcept(false)
 {
@@ -202,92 +289,10 @@ void MembersList<M>::pop_back() noexcept(false)
         }
     }
     else
-        throw ("ERROR");
+        throw InvalidMembers("ERROR");
 }
 
-template<typename M>
-void MembersList<M>::select_sort()
-{
-    for(Members<M> * i = head; i != NULL; i = i->next)
-    {
-        for(Members<M> * j = i->next; j != NULL; j = j->next)
-        {
-            if(j->data < i->data)
-            {
-                M temp = j->data;
-                j->data = i->data;
-                i->data = temp;
-            }
-        }
-    }
-}
-
-template<typename M>
-bool MembersList<M>::isEmpty() const
-{
-    return head == NULL;
-}
-
-template<typename M>
-bool MembersList<M>::remove_member(const M& value)
-{
-    if(head == NULL)
-        return false;
-    else
-    {
-        Members<M> *temp = head;
-        while(temp->data != value)
-            temp = temp->next;
-        if(temp != NULL)
-        {
-            if(temp->prev == NULL)
-            {
-                pop_front();
-                return true;
-            }
-            else if(temp->next == NULL)
-            {
-                pop_back();
-                return true;
-            }
-            else
-            {
-                Members<M> *prevTemp = temp->prev;
-                prevTemp->next = temp->next;
-                temp->next->prev = prevTemp;
-                delete temp;
-                temp = NULL;
-                return true;
-            }
-        }
-        else
-            return false;
-    }
-}// not working.. fixed code
-
-template<typename M>
-bool MembersList<M>::find_member(const M& value)
-{
-    for(Members<M>* i = head; i != NULL; i = i->next)
-    {
-        if(i->data == value)
-            return true;
-    }
-    return false;
-}
-
-template<typename M>
-size_t MembersList<M>::find_position_member(const M& value)
-{
-    size_t index = 0;
-    for(Members<M>* i = head; i != NULL; i = i->next)
-    {
-        if(i->data == value)
-            index = count_helper(i);
-    }
-    return index;
-}
-
+// output stringstream
 template<typename M>
 std::string MembersList<M>::output_linkedlist()
 {
@@ -303,12 +308,7 @@ std::string MembersList<M>::output_linkedlist()
     return out_ss.str();
 }
 
-template<typename M>
-size_t MembersList<M>::members_size() const
-{
-    return count_helper(head);
-}
-
+// helper function for counter
 template<typename M>
 size_t MembersList<M>::count_helper(Members<M> * mPtr) const
 {

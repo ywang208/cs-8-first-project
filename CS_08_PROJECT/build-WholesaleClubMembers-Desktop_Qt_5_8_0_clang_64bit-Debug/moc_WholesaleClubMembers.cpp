@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_WholesaleClubMembers_t {
     QByteArrayData data[24];
-    char stringdata0[690];
+    char stringdata0[700];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -32,37 +32,38 @@ struct qt_meta_stringdata_WholesaleClubMembers_t {
 static const qt_meta_stringdata_WholesaleClubMembers_t qt_meta_stringdata_WholesaleClubMembers = {
     {
 QT_MOC_LITERAL(0, 0, 20), // "WholesaleClubMembers"
-QT_MOC_LITERAL(1, 21, 12), // "get_shoppers"
-QT_MOC_LITERAL(2, 34, 0), // ""
-QT_MOC_LITERAL(3, 35, 38), // "on_lineEdit_MembersEntry_retu..."
-QT_MOC_LITERAL(4, 74, 25), // "on_radioButton_ID_clicked"
-QT_MOC_LITERAL(5, 100, 27), // "on_radioButton_name_clicked"
-QT_MOC_LITERAL(6, 128, 27), // "on_pushButton_Enter_clicked"
-QT_MOC_LITERAL(7, 156, 27), // "on_pushButton_Clear_clicked"
-QT_MOC_LITERAL(8, 184, 25), // "on_pushButton_Yes_clicked"
-QT_MOC_LITERAL(9, 210, 24), // "on_pushButton_No_clicked"
-QT_MOC_LITERAL(10, 235, 32), // "on_radioButton_Options_1_clicked"
-QT_MOC_LITERAL(11, 268, 32), // "on_radioButton_Options_2_clicked"
-QT_MOC_LITERAL(12, 301, 32), // "on_radioButton_Options_3_clicked"
-QT_MOC_LITERAL(13, 334, 32), // "on_radioButton_Options_4_clicked"
-QT_MOC_LITERAL(14, 367, 32), // "on_radioButton_Options_5_clicked"
-QT_MOC_LITERAL(15, 400, 32), // "on_radioButton_Options_6_clicked"
-QT_MOC_LITERAL(16, 433, 32), // "on_radioButton_Options_7_clicked"
-QT_MOC_LITERAL(17, 466, 32), // "on_radioButton_Options_8_clicked"
-QT_MOC_LITERAL(18, 499, 32), // "on_radioButton_Reports_1_clicked"
-QT_MOC_LITERAL(19, 532, 32), // "on_radioButton_Reports_2_clicked"
-QT_MOC_LITERAL(20, 565, 32), // "on_radioButton_Reports_3_clicked"
-QT_MOC_LITERAL(21, 598, 32), // "on_radioButton_Reports_4_clicked"
-QT_MOC_LITERAL(22, 631, 32), // "on_radioButton_Reports_5_clicked"
-QT_MOC_LITERAL(23, 664, 25) // "on_lineEdit_returnPressed"
+QT_MOC_LITERAL(1, 21, 21), // "on_pushButton_clicked"
+QT_MOC_LITERAL(2, 43, 0), // ""
+QT_MOC_LITERAL(3, 44, 21), // "get_wareHouseShoppers"
+QT_MOC_LITERAL(4, 66, 27), // "on_radioButton_Name_clicked"
+QT_MOC_LITERAL(5, 94, 25), // "on_radioButton_ID_clicked"
+QT_MOC_LITERAL(6, 120, 35), // "on_lineEdit_EntryInfo_returnP..."
+QT_MOC_LITERAL(7, 156, 31), // "on_pushButton_EnterInfo_clicked"
+QT_MOC_LITERAL(8, 188, 31), // "on_pushButton_ClearInfo_clicked"
+QT_MOC_LITERAL(9, 220, 25), // "on_pushButton_Yes_clicked"
+QT_MOC_LITERAL(10, 246, 24), // "on_pushButton_No_clicked"
+QT_MOC_LITERAL(11, 271, 32), // "on_radioButton_Options_1_clicked"
+QT_MOC_LITERAL(12, 304, 32), // "on_radioButton_Options_2_clicked"
+QT_MOC_LITERAL(13, 337, 32), // "on_radioButton_Options_3_clicked"
+QT_MOC_LITERAL(14, 370, 32), // "on_radioButton_Options_4_clicked"
+QT_MOC_LITERAL(15, 403, 32), // "on_radioButton_Options_5_clicked"
+QT_MOC_LITERAL(16, 436, 32), // "on_radioButton_Options_6_clicked"
+QT_MOC_LITERAL(17, 469, 32), // "on_radioButton_Options_7_clicked"
+QT_MOC_LITERAL(18, 502, 32), // "on_radioButton_Options_8_clicked"
+QT_MOC_LITERAL(19, 535, 32), // "on_radioButton_Reports_1_clicked"
+QT_MOC_LITERAL(20, 568, 32), // "on_radioButton_Reports_2_clicked"
+QT_MOC_LITERAL(21, 601, 32), // "on_radioButton_Reports_3_clicked"
+QT_MOC_LITERAL(22, 634, 32), // "on_radioButton_Reports_4_clicked"
+QT_MOC_LITERAL(23, 667, 32) // "on_radioButton_Reports_5_clicked"
 
     },
-    "WholesaleClubMembers\0get_shoppers\0\0"
-    "on_lineEdit_MembersEntry_returnPressed\0"
+    "WholesaleClubMembers\0on_pushButton_clicked\0"
+    "\0get_wareHouseShoppers\0"
+    "on_radioButton_Name_clicked\0"
     "on_radioButton_ID_clicked\0"
-    "on_radioButton_name_clicked\0"
-    "on_pushButton_Enter_clicked\0"
-    "on_pushButton_Clear_clicked\0"
+    "on_lineEdit_EntryInfo_returnPressed\0"
+    "on_pushButton_EnterInfo_clicked\0"
+    "on_pushButton_ClearInfo_clicked\0"
     "on_pushButton_Yes_clicked\0"
     "on_pushButton_No_clicked\0"
     "on_radioButton_Options_1_clicked\0"
@@ -77,8 +78,7 @@ QT_MOC_LITERAL(23, 664, 25) // "on_lineEdit_returnPressed"
     "on_radioButton_Reports_2_clicked\0"
     "on_radioButton_Reports_3_clicked\0"
     "on_radioButton_Reports_4_clicked\0"
-    "on_radioButton_Reports_5_clicked\0"
-    "on_lineEdit_returnPressed"
+    "on_radioButton_Reports_5_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -124,24 +124,24 @@ static const uint qt_meta_data_WholesaleClubMembers[] = {
     QMetaType::Void,
     QMetaType::Bool,
     QMetaType::Bool,
-    QMetaType::Bool,
-    QMetaType::Bool,
-    QMetaType::Bool,
-    QMetaType::Bool,
-    QMetaType::Bool,
-    QMetaType::Bool,
-    QMetaType::Bool,
-    QMetaType::Bool,
-    QMetaType::Bool,
-    QMetaType::Bool,
-    QMetaType::Bool,
-    QMetaType::Bool,
-    QMetaType::Bool,
-    QMetaType::Bool,
-    QMetaType::Bool,
-    QMetaType::Bool,
-    QMetaType::Bool,
     QMetaType::Void,
+    QMetaType::Bool,
+    QMetaType::Bool,
+    QMetaType::Bool,
+    QMetaType::Bool,
+    QMetaType::Bool,
+    QMetaType::Bool,
+    QMetaType::Bool,
+    QMetaType::Bool,
+    QMetaType::Bool,
+    QMetaType::Bool,
+    QMetaType::Bool,
+    QMetaType::Bool,
+    QMetaType::Bool,
+    QMetaType::Bool,
+    QMetaType::Bool,
+    QMetaType::Bool,
+    QMetaType::Bool,
 
        0        // eod
 };
@@ -152,47 +152,47 @@ void WholesaleClubMembers::qt_static_metacall(QObject *_o, QMetaObject::Call _c,
         WholesaleClubMembers *_t = static_cast<WholesaleClubMembers *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->get_shoppers(); break;
-        case 1: _t->on_lineEdit_MembersEntry_returnPressed(); break;
-        case 2: { bool _r = _t->on_radioButton_ID_clicked();
+        case 0: _t->on_pushButton_clicked(); break;
+        case 1: _t->get_wareHouseShoppers(); break;
+        case 2: { bool _r = _t->on_radioButton_Name_clicked();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
-        case 3: { bool _r = _t->on_radioButton_name_clicked();
+        case 3: { bool _r = _t->on_radioButton_ID_clicked();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
-        case 4: { bool _r = _t->on_pushButton_Enter_clicked();
+        case 4: _t->on_lineEdit_EntryInfo_returnPressed(); break;
+        case 5: { bool _r = _t->on_pushButton_EnterInfo_clicked();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
-        case 5: { bool _r = _t->on_pushButton_Clear_clicked();
+        case 6: { bool _r = _t->on_pushButton_ClearInfo_clicked();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
-        case 6: { bool _r = _t->on_pushButton_Yes_clicked();
+        case 7: { bool _r = _t->on_pushButton_Yes_clicked();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
-        case 7: { bool _r = _t->on_pushButton_No_clicked();
+        case 8: { bool _r = _t->on_pushButton_No_clicked();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
-        case 8: { bool _r = _t->on_radioButton_Options_1_clicked();
+        case 9: { bool _r = _t->on_radioButton_Options_1_clicked();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
-        case 9: { bool _r = _t->on_radioButton_Options_2_clicked();
+        case 10: { bool _r = _t->on_radioButton_Options_2_clicked();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
-        case 10: { bool _r = _t->on_radioButton_Options_3_clicked();
+        case 11: { bool _r = _t->on_radioButton_Options_3_clicked();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
-        case 11: { bool _r = _t->on_radioButton_Options_4_clicked();
+        case 12: { bool _r = _t->on_radioButton_Options_4_clicked();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
-        case 12: { bool _r = _t->on_radioButton_Options_5_clicked();
+        case 13: { bool _r = _t->on_radioButton_Options_5_clicked();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
-        case 13: { bool _r = _t->on_radioButton_Options_6_clicked();
+        case 14: { bool _r = _t->on_radioButton_Options_6_clicked();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
-        case 14: { bool _r = _t->on_radioButton_Options_7_clicked();
+        case 15: { bool _r = _t->on_radioButton_Options_7_clicked();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
-        case 15: { bool _r = _t->on_radioButton_Options_8_clicked();
+        case 16: { bool _r = _t->on_radioButton_Options_8_clicked();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
-        case 16: { bool _r = _t->on_radioButton_Reports_1_clicked();
+        case 17: { bool _r = _t->on_radioButton_Reports_1_clicked();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
-        case 17: { bool _r = _t->on_radioButton_Reports_2_clicked();
+        case 18: { bool _r = _t->on_radioButton_Reports_2_clicked();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
-        case 18: { bool _r = _t->on_radioButton_Reports_3_clicked();
+        case 19: { bool _r = _t->on_radioButton_Reports_3_clicked();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
-        case 19: { bool _r = _t->on_radioButton_Reports_4_clicked();
+        case 20: { bool _r = _t->on_radioButton_Reports_4_clicked();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
-        case 20: { bool _r = _t->on_radioButton_Reports_5_clicked();
+        case 21: { bool _r = _t->on_radioButton_Reports_5_clicked();
             if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = _r; }  break;
-        case 21: _t->on_lineEdit_returnPressed(); break;
         default: ;
         }
     }
