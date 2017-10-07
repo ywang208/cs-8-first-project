@@ -202,7 +202,6 @@ DIST          = ../../../../5.8/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../5.8/clang_64/mkspecs/features/qt_config.prf \
 		../../../../5.8/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../../5.8/clang_64/mkspecs/features/spec_post.prf \
-		../WholesaleClubMembers/.qmake.stash \
 		../../../../5.8/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../../5.8/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../../5.8/clang_64/mkspecs/features/toolchain.prf \
@@ -230,8 +229,8 @@ DIST          = ../../../../5.8/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../5.8/clang_64/mkspecs/features/yacc.prf \
 		../../../../5.8/clang_64/mkspecs/features/lex.prf \
 		../WholesaleClubMembers/WholesaleClubMembers.pro ../WholesaleClubMembers/WholesaleClubMembers.h \
-		../WholesaleClubMembers/InvalidMembers.h \
-		../WholesaleClubMembers/MembersList.h ../WholesaleClubMembers/main.cpp \
+		../WholesaleClubMembers/MembersList.h \
+		../WholesaleClubMembers/InvalidList.h ../WholesaleClubMembers/main.cpp \
 		../WholesaleClubMembers/WholesaleClubMembers.cpp
 QMAKE_TARGET  = WholesaleClubMembers
 DESTDIR       = 
@@ -394,7 +393,6 @@ Makefile: ../WholesaleClubMembers/WholesaleClubMembers.pro ../../../../5.8/clang
 		../../../../5.8/clang_64/mkspecs/features/qt_config.prf \
 		../../../../5.8/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../../5.8/clang_64/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		../../../../5.8/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../../5.8/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../../5.8/clang_64/mkspecs/features/toolchain.prf \
@@ -575,7 +573,6 @@ Makefile: ../WholesaleClubMembers/WholesaleClubMembers.pro ../../../../5.8/clang
 ../../../../5.8/clang_64/mkspecs/features/qt_config.prf:
 ../../../../5.8/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../../../5.8/clang_64/mkspecs/features/spec_post.prf:
-.qmake.stash:
 ../../../../5.8/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../../../5.8/clang_64/mkspecs/features/mac/sdk.prf:
 ../../../../5.8/clang_64/mkspecs/features/toolchain.prf:
@@ -636,7 +633,7 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents ../../../../5.8/clang_64/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents ../WholesaleClubMembers/WholesaleClubMembers.h ../WholesaleClubMembers/InvalidMembers.h ../WholesaleClubMembers/MembersList.h $(DISTDIR)/
+	$(COPY_FILE) --parents ../WholesaleClubMembers/WholesaleClubMembers.h ../WholesaleClubMembers/MembersList.h ../WholesaleClubMembers/InvalidList.h $(DISTDIR)/
 	$(COPY_FILE) --parents ../WholesaleClubMembers/main.cpp ../WholesaleClubMembers/WholesaleClubMembers.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents ../WholesaleClubMembers/WholesaleClubMembers.ui $(DISTDIR)/
 
@@ -648,7 +645,6 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r WholesaleClubMembers.app
-	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -675,20 +671,6 @@ compiler_moc_header_clean:
 	-$(DEL_FILE) moc_WholesaleClubMembers.cpp
 moc_WholesaleClubMembers.cpp: ../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QTextStream \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qtextstream.h \
-		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QString \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QtDebug \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qdebug.h \
-		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
-		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QFile \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qfile.h \
-		../WholesaleClubMembers/MembersList.h \
-		../WholesaleClubMembers/InvalidMembers.h \
 		../WholesaleClubMembers/WholesaleClubMembers.h \
 		moc_predefs.h \
 		../../../../5.8/clang_64/bin/moc
@@ -718,20 +700,6 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 main.o: ../WholesaleClubMembers/main.cpp ../WholesaleClubMembers/WholesaleClubMembers.h \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QTextStream \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qtextstream.h \
-		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QString \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QtDebug \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qdebug.h \
-		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
-		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QFile \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qfile.h \
-		../WholesaleClubMembers/MembersList.h \
-		../WholesaleClubMembers/InvalidMembers.h \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/QApplication \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/qapplication.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../WholesaleClubMembers/main.cpp
@@ -739,20 +707,6 @@ main.o: ../WholesaleClubMembers/main.cpp ../WholesaleClubMembers/WholesaleClubMe
 WholesaleClubMembers.o: ../WholesaleClubMembers/WholesaleClubMembers.cpp ../WholesaleClubMembers/WholesaleClubMembers.h \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/QMainWindow \
 		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/qmainwindow.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QTextStream \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qtextstream.h \
-		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/QWidget \
-		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/qwidget.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QString \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qstring.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QtDebug \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qdebug.h \
-		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/QLabel \
-		../../../../5.8/clang_64/lib/QtWidgets.framework/Headers/qlabel.h \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/QFile \
-		../../../../5.8/clang_64/lib/QtCore.framework/Headers/qfile.h \
-		../WholesaleClubMembers/MembersList.h \
-		../WholesaleClubMembers/InvalidMembers.h \
 		ui_WholesaleClubMembers.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o WholesaleClubMembers.o ../WholesaleClubMembers/WholesaleClubMembers.cpp
 

@@ -1,6 +1,6 @@
 #-------------------------------------------------
 #
-# Project created by QtCreator 2017-10-04T13:33:41
+# Project created by QtCreator 2017-10-05T02:13:28
 #
 #-------------------------------------------------
 
@@ -29,8 +29,8 @@ SOURCES += \
 
 HEADERS += \
         WholesaleClubMembers.h \
-    InvalidMembers.h \
-    MembersList.h
+    MembersList.h \
+    InvalidList.h
 
 FORMS += \
         WholesaleClubMembers.ui

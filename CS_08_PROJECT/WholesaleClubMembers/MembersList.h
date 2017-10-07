@@ -1,6 +1,6 @@
 #ifndef MEMBERSLIST_H
 #define MEMBERSLIST_H
-#include "InvalidMembers.h"
+#include "InvalidList.h"
 
 // struct nodes of Members templated
 template<typename M>
@@ -9,20 +9,15 @@ struct Members
     M data;
     Members* next;
     Members* prev;
-    Members(M data) :
-        data(data),
-        next(NULL),
-        prev(NULL) {}
+    Members(M data):data(data),next(NULL),prev(NULL){}
 };
 
 // class MembersList templated
 template<typename M>
 class MembersList
 {
-    // Head and Tail pointers
     Members<M>* head;
     Members<M>* tail;
-    // Counter
     size_t count_helper(Members<M>* mPtr) const;
 public:
     MembersList();                                          // Constructor
@@ -111,6 +106,23 @@ MembersList<M>::~MembersList()
     tail = NULL;
 }
 
+// helper function for counter
+template<typename M>
+size_t MembersList<M>::count_helper(Members<M> * mPtr) const
+{
+    if(mPtr == NULL)
+        return 0;
+    else
+        return 1 + count_helper(mPtr->prev);
+}
+
+// returns size of list
+template<typename M>
+size_t MembersList<M>::members_size() const
+{
+    return count_helper(head);
+}
+
 // returns members data type with its position given
 template<typename M>
 Members<M>* MembersList<M>::return_member(size_t pos) const
@@ -119,13 +131,6 @@ Members<M>* MembersList<M>::return_member(size_t pos) const
     for(size_t i = 0; i < pos - 1; ++i)
         tmp = tmp->next;
     return tmp;
-}
-
-// returns size of list
-template<typename M>
-size_t MembersList<M>::members_size() const
-{
-    return count_helper(head);
 }
 
 // find position of member
@@ -141,13 +146,6 @@ size_t MembersList<M>::find_position_member(const M& value)
     return index;
 }
 
-// isEmpty
-template<typename M>
-bool MembersList<M>::isEmpty() const
-{
-    return head == NULL;
-}
-
 // return true if member is in the list
 template<typename M>
 bool MembersList<M>::find_member(const M& value)
@@ -158,6 +156,13 @@ bool MembersList<M>::find_member(const M& value)
             return true;
     }
     return false;
+}
+
+// isEmpty
+template<typename M>
+bool MembersList<M>::isEmpty() const
+{
+    return head == NULL;
 }
 
 // remove member
@@ -266,7 +271,7 @@ void MembersList<M>::pop_front() noexcept(false)
         }
     }
     else
-        throw InvalidMembers("ERROR");
+        throw InvalidList("ERROR");
 }
 
 // pop_back
@@ -289,7 +294,7 @@ void MembersList<M>::pop_back() noexcept(false)
         }
     }
     else
-        throw InvalidMembers("ERROR");
+        throw InvalidList("ERROR");
 }
 
 // output stringstream
@@ -306,16 +311,6 @@ std::string MembersList<M>::output_linkedlist()
     }
     out_ss << "\n";
     return out_ss.str();
-}
-
-// helper function for counter
-template<typename M>
-size_t MembersList<M>::count_helper(Members<M> * mPtr) const
-{
-    if(mPtr == NULL)
-        return 0;
-    else
-        return 1 + count_helper(mPtr->prev);
 }
 
 #endif // MEMBERSLIST_H
